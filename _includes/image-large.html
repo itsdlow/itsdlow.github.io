@@ -1,0 +1,25 @@
+<!--
+# include params....
+  # title
+  # url
+-->
+{% if include.title and include.url %}
+<section class="row m-2">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="d-flex justify-content-center border-bottom m-3">
+          <span class="m-2">{{ include.title }}</span>
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-center embed-responsive embed-responsive-16by9">
+          <iframe width="770" height="700" class="embed-responsive-item" src="{{ include.url }}" frameborder="0" allow="accelerometer; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
