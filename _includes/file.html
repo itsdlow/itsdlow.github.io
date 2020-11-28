@@ -1,0 +1,34 @@
+<!--
+# include params....
+  # title
+  # url
+  # media_type
+-->
+
+{% if include.title and include.url and include.media_type %}
+<section class="row m-2">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="d-flex justify-content-center border-bottom m-3">
+          <span class="m-2">{{ include.title }}</span>
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-center embed-responsive embed-responsive-16by9">
+          <!--
+          NOTE:: TODO => create html page for each "file" use iframe to hold webpage (enables full screen) + safer for alternate (alt:)
+          https://stackoverflow.com/questions/19654577/html-embedded-pdf-iframe
+          -->
+          <object data="{{ include.url }}" type="{{ include.media_type }}" width="1000" height="750">
+            alt : <a href="{{ include.url }}" download>{{ include.title }}</a>
+          </object>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
