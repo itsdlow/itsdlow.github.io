@@ -1,7 +1,7 @@
 ---
 collection: portfolio
 title: "Multithreaded Audio Engine"
-excerpt: "An audio engine layer abstraction on top of Windows XAudio2 audio API<br/><img src='/images/audio_engine.jpg'>"
+excerpt: "An audio engine layer abstraction on top of Windows XAudio2 audio API<br/><img src='/images/audio_engine.png'>"
 video_title: "Walk-through"
 video_url: "https://www.youtube.com/embed/lb4Lz04Od1M"
 post_resource: "post_resources/Audio_Engine_Documentation.markdown"
