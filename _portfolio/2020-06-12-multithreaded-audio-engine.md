@@ -2,7 +2,6 @@
 collection: portfolio
 title: "Multithreaded Audio Engine"
 excerpt: "An audio engine layer abstraction on top of Windows XAudio2 audio API<br/><img src='/images/audio_engine.jpg'>"
-title: "Multi-Threaded Audio Engine"
 video_title: "Walk-through"
 video_url: "https://www.youtube.com/embed/lb4Lz04Od1M"
 post_resource: "post_resources/Audio_Engine_Documentation.markdown"
@@ -18,7 +17,7 @@ XAudio2 is a low-level audio API. This application creates a more usable, multi-
 
 ## The Experience
 
-This project was the result of 20+ hours of work in a 10 week multithreaded architecture course at DePaul University. And to date (11/20), is the project I am most proud of. As it was for a class, we were restricted to only the most basic threading tools, mutexes. And with that, were to focus on creating a clean architecture, considerate of the fact we were programming an interface for programmers to use as a extension of a game engine.
+This project was the result of 20+ hours per week of work in a 10 week multithreaded architecture course at DePaul University. And to date (11/20), is the project I am most proud of. As it was for a class, we were restricted to only the most basic threading tools, mutexes. And with that, were to focus on creating a clean architecture, considerate of the fact we were programming an interface for programmers to use as a extension of a game engine.
 
 ## The Architecture
 

@@ -16,7 +16,7 @@ This project was very interesting and challenging for unexpected reasons. This p
 ### My Responsibilities
 - Me and the division leader of the project were responsible for designing the architecture of the Tetris game, primarily summarizing it through the use of a UML diagram which we composed together. In addition to designing and paritioning components of the architecture, I was also actively involved in the leadership of the division, reviewing work, clearing any misunderstandings with the design, and ensuring that teams were staying on pace.
 
-<!-- Needs iframe size 770x700 -->
+<!-- Needs iframe size 770x700 TODO: supply to include -->
 
 {% include image-large.html url="/images/SE475-Project3_UML.png" title="Tetris Game UML" %}
 
@@ -28,7 +28,7 @@ This project was very interesting and challenging for unexpected reasons. This p
 
 
 ### The BlockGrid
-- The smallest part of this project, for me, was thecoding portion, despite this, the _BlockGrid_ is an integral part of the Tetris game system, as it stores the current state of the grid and is responsible for determining any events in the game such as placed shapes, completed lines, and game over. The implementation of the grid is fairly simple, as a 2D array of Blocks.
+- The smallest part of this project, for me, was thecoding portion, despite this, the _BlockGrid_ is an integral part of the Tetris game system, as it stores the current state of the grid and is responsible for determining any events in the game such as placed shapes, completed lines, and game over. The implementation of the grid is fairly simple, as a 2D array of _Blocks_.
 
 ### Lessons
 
