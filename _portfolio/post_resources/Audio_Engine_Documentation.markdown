@@ -11,9 +11,14 @@
 - [3 Creating Playlists](#sect-3 "Section 3.0")
 - [4 Initializing a Sound Object](#sect-4 "Section 4.0")
 - [5 Interacting with a GameSound](#sect-5 "Section 5.0")
-- [6 Creating Callbacks](#sect-6 "Section 6.0")
-- [7 Creating Sound Commands](#sect-7 "Section 7.0")
-- [8 Misc.](#sect-8 "Section 8.0")
+- [6 Callbacks](#sect-6 "Section 6.0")
+	- [6.1  FileCallback](#sect-6.1 "Section 6.1")
+	- [6.2  SoundCallback](#sect-6.2 "Section 6.2")
+	- [6.3  Creating Callbacks](#sect-6.3 "Section 6.3")
+- [7 Sound Commands](#sect-7 "Section 7.0")
+	- [7.1 Creating GameCommands](#sect-7.1 "Section 7.1")
+	- [7.2 Creating SoundScripts](#sect-7.2 "Section 7.2")
+- [8 Miscellaneous](#sect-8 "Section 8.0")
 	- [8.1 The Sound Priority Table](#sect-8.1 "Section 8.1")
 <br>
 <br>
@@ -113,7 +118,7 @@ void Demo2()
 ## 4 - **Initializing a Sound Object**
 - After loading all the wave resource, a _Sound_ can be created to play an manipulate a particular _WaveSound_.
 
-> A reference to a sound handle is created by supplying the _SoundID_ to SoundManager::InitializeSound. This function must also be supplied a _GameSound_ as an out parameter, used to give access to a _Sound_.
+> A reference to a sound handle is created by supplying the _SoundID_ or _PlaylistID_ to SoundManager::InitializeSound. This function must also be supplied a _GameSound_ as an out parameter, used to give access to a _Sound_.
 >	
 {% highlight cpp %}
 void Demo1()
@@ -122,23 +127,12 @@ void Demo1()
 
 	{
 		GameSound gSnd_101;
-		sent = SoundManager::InitializeSound(gSnd_101, SoundID::PLAY_SOUND101, new CustomSoundCallback());
+		sent = SoundManager::InitializeSound(gSnd_101, SoundID::PLAY_SOUND101);
 		assert(sent);
 	...
 
 
 {% endhighlight %}
-
-
->In addition, a CustomCallback can be supplied to allow for custom code to be executed on the following _Sound_ events: 
-- sound stopped
-- sound ended
-- sound released
-- sound played
-- sound paused
-- sound resumed
-- sound killed.
->
 
 [back to contents](#contents "contents")
 
@@ -163,16 +157,18 @@ void Demo1()
 
 >	
 {% highlight cpp %}
-void Demo1()
+bool PlayAndReleaseSound(SoundID id, int priority, float vol)
 {
-	bool sent = false;
+	GameSound gSnd;
+	const bool sent = SoundManager::InitializeSound(gSnd, id);
+	assert(sent);
+	assert(Handle::Status::SUCCESS == gSnd.SetVolume(vol));
 
-	{
-		GameSound gSnd_101;
-		sent = SoundManager::InitializeSound(gSnd_101, SoundID::PLAY_SOUND101, new CustomSoundCallback());
-		assert(sent);
-	...
+	const Handle::Status status = gSnd.Play(priority);//Lower priority returns insufficient space handle status
+	assert(Handle::Status::SUCCESS == status || Handle::Status::INSUFFIENT_SPACE == status);
 
+	return sent;
+}
 
 {% endhighlight %}
 
@@ -181,6 +177,134 @@ void Demo1()
 
 <br>
 
+
+<a id="sect-6"></a>
+## 6 - **Callbacks**
+- There are 2 places where a callback can be supplied, when initializing a _WaveSound_ or a _Sound_.  
+
+
+
+<a id="sect-6.1"></a>
+
+### 6.1 - FileCallbacks
+> A _FileCallback_ can be supplied when intializing a _WaveSound_. This enables the user to execute custom code when the following _WaveSound_ load events occur:
+- wave already loaded
+- wave load error
+- wave loaded
+>
+
+{% highlight cpp %}
+void LoadDemo5()
+{
+	bool sent = false;
+	sent = SoundManager::LoadWaveResource("../MS2_AudioFiles/Electro_mono.wav", SoundID::PLAY_SOUND501);
+	assert(sent);
+	sent = SoundManager::LoadWaveResource("../MS2_AudioFiles/Alert_mono.wav", SoundID::PLAY_SOUND502, new Demo5_FileCallback());
+	assert(sent);
+}
+
+
+{% endhighlight %}
+
+
+<a id="sect-6.2"></a>
+
+### 6.2 - SoundCallbacks
+> A _SoundCallback_ can be supplied when intializing a _Sound_. This enables the user to execute custom code when the following _Sound_ events occur:
+- sound stopped
+- sound ended
+- sound released
+- sound played
+- sound paused
+- sound resumed
+- sound killed.
+>
+{% highlight cpp %}
+void Demo1()
+{
+	bool sent = false;
+
+	{
+		GameSound gSnd_101;
+		sent = SoundManager::InitializeSound(gSnd_101, SoundID::PLAY_SOUND101, new CustomSoundCallback());
+		assert(sent);
+		...
+
+
+{% endhighlight %}
+
+
+<a id="sect-6.3"></a>
+
+### 6.3 - Creating Callbacks
+> A custom _SoundCallback_ or _FileCallback_ can be created by simply defining a class which publically inherits from either and overriding the relevant methods.
+>
+
+
+[back to contents](#contents "contents")
+
+<br>
+
+
+<a id="sect-7.0"></a>
+## 7 - **Sound Commands**
+- A sound command is used to trigger a sound to play or an action on a particular sound. There are 2 types of sound commands, a _GameCommand_ and a _SoundScript_.
+
+<a id="sect-7.1"></a>
+### 7.1 - Creating GameCommands
+> The first derived sound command is a _GameCommand_, this allows for execution of a command with user supplied code, at a given delta time. This is done by calling SoundManager::CreateTimeEvent, supplying a delta time for execution as well as a derived _GameCommand_, initialized through RAII.
+
+{% highlight cpp %}
+
+	//create Sound events
+	sent = SoundManager::CreateTimeEvent(new CustomGameCommand(SoundID::PLAY_SOUND502, 0.3f, -1.0f), 5 * Time(Duration::TIME_ONE_SECOND));
+	...
+
+{% endhighlight %}
+
+
+<a id="sect-7.2"></a>
+### 7.2 - Creating SoundScripts
+> The second derived sound command is a _SoundScript_, this allows for execution of a command with user supplied code, at a given delta time *on* a particular _GameSound_. This is done by calling GameSound::AddScript, supplying a delta time for execution as well as a derived _SoundScript_, initialized through RAII.
+
+{% highlight cpp %}
+
+void Demo5_Beethoven(const Time& load_start_time)
+{
+	SoundManager::StopAllSounds();
+	const Time elapsedTime = SoundManager::GetSoundCurrentTime() - load_start_time;
+	//delta Time of TIME since load UNDER 60s
+	const Time deltaTime = (60 * Time(Duration::TIME_ONE_SECOND)) - elapsedTime;
+	
+	GameSound gSnd;
+	const bool sent = SoundManager::InitializeSound(gSnd, SoundID::PLAY_SOUND503);
+	assert(sent);
+	Handle::Status status = gSnd.Play();
+	assert(Handle::Status::SUCCESS == status || Handle::Status::INSUFFIENT_SPACE == status);
+
+	// set stop command @ 60 seconds from DEMO_START
+	status = gSnd.AddScript(new StopSoundScript(), deltaTime);
+	assert(Handle::Status::SUCCESS == status);
+}
+
+{% endhighlight %}
+
+
+[back to contents](#contents "contents")
+
+<br>
+
+
+<a id="sect-8.0"></a>
+## 8 - **Miscellaneous**
+
+<a id="sect-8.1"></a>
+### 8.1 - The Sound Priority Table
+> A sound priority table has been implemented which restricts the number of sounds allowed to play at once to a set, configurable amount. A _Sound_ is given a priority number on initialization, determining its rank in the table. If a new _Sound_ is played while the priority table is full, the lowest priority _Sound_ is "killed".
+
+[back to contents](#contents "contents")
+
+<br>
 
 [sect-1]: #sect-1 "Section 1.0"
 [sect-0]: #sect-0 "Section 0.0"

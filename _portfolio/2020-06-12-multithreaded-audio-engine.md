@@ -1,14 +1,14 @@
 ---
 collection: portfolio
 title: "Multithreaded Audio Engine"
-excerpt: "An audio engine layer abstraction on top of Windows XAudio2 audio API<br/><img src='/images/audio_engine.png'>"
+excerpt: "An audio engine library abstraction on top of Windows XAudio2 audio API<br/><img src='/images/audio_engine.png'>"
 video_title: "Walk-through"
 video_url: "https://www.youtube.com/embed/lb4Lz04Od1M"
 post_resource: "post_resources/Audio_Engine_Documentation.markdown"
 ---
 An audio engine layer abstraction on top of Windows XAudio2 audio API.
 
-XAudio2 is a low-level audio API. This application creates a more usable, multi-threaded API to interact with XAudio2, implementing the Actor model approach.
+XAudio2 is a low-level audio API. This software creates a more usable, multi-threaded library to interact with XAudio2, implementing the Actor model approach.
 
 {% if page.video_title and page.video_url %}
 	{% include {{ page.video_include }} url=page.video_url title=page.video_title %}

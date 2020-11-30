@@ -1,7 +1,7 @@
 ---
 collection: portfolio
 title: "Tetris - Globally Distributed Software Development"
-excerpt: "Distributed Software Development Project<br/><img src='/images/tetris-logo.jpg'>"
+excerpt: "Distributed Software Development Project<br/><img src='/images/gsd-thumbnail.PNG'>"
 image_title: "Walk-through"
 image_url: "/images/SE475-Project3_UML.png"
 ---
