@@ -1,12 +1,12 @@
 ---
 collection: portfolio
 title: "Atari Centipede"
-excerpt: "A robust recreation of the game Centipede developed with a basic game engine, AZUL. This application implements numerous design patterns to enable easy expansion and great maintainability.
+excerpt: "A robust recreation of the game _Centipede_ developed with a barebones game engine, TEAL, based on the SFML framework. This application implements numerous design patterns to enable testing, maintainability, and expansion of the game with ease.
 <br/><img src='/images/atari-centipede.jpg'>"
 video_title: "Walk-through"
 video_url: "https://www.youtube.com/embed/videoseries?list=PL2W1KRQ_zCtlF9Jerzt-G_xHnG8yOBoTC"
 ---
-A robust recreation of the game Centipede developed with a basic game engine, AZUL. This application implements numerous design patterns to enable maintainability and expansion and fine-tuning of the game with ease.
+A robust recreation of the game _Centipede_ developed with a barebones game engine, TEAL, based on the SFML framework. This application implements numerous design patterns to enable testing, maintainability, and expansion of the game with ease.
 
 {% if page.video_title and page.video_url %}
 	{% include {{ page.video_include }} url=page.video_url title=page.video_title %}

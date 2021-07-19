@@ -5,9 +5,11 @@
   # media_type
 -->
 
-{% if include.title and include.url and include.media_type %}
+{% if include.url and include.media_type and include.update_date %}
 <section class="row m-2">
   <div class="col-md-12">
+
+  	{% if include.title %}
     <div class="row">
       <div class="col-md-12">
         <h2 class="d-flex justify-content-center border-bottom m-3">
@@ -15,15 +17,14 @@
         </h2>
       </div>
     </div>
+    {% endif %}
+
     <div class="row">
       <div class="col-md-12">
         <div class="d-flex justify-content-center embed-responsive embed-responsive-16by9">
-          <!--
-          NOTE:: TODO => create html page for each "file" use iframe to hold webpage (enables full screen) + safer for alternate (alt:)
-          https://stackoverflow.com/questions/19654577/html-embedded-pdf-iframe
-          -->
+
           <object data="{{ include.url }}" type="{{ include.media_type }}" width="1000" height="750">
-            alt : <a href="{{ include.url }}" download>{{ include.title }}</a>
+             My CV is available for download <a href="{{ include.url }}" download>here</a>. Last updated {{ include.update_date }}.
           </object>
 
         </div>
@@ -32,3 +33,8 @@
   </div>
 </section>
 {% endif %}
+
+<!--
+NOTE:: TODO => create html page for each "file" use iframe to hold webpage (enables full screen) + safer for alternate (alt:)
+https://stackoverflow.com/questions/19654577/html-embedded-pdf-iframe
+-->
