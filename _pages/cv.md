@@ -5,7 +5,7 @@ permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
-file_url: "files/2021_Resume_DeAngelo.pdf"
+file_url: "files/DeAngelo_Resume_08-2021.pdf"
 file_type: "application/pdf"
 last_update_date: "July 2021"
 ---
