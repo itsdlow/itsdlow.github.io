@@ -1,6 +1,6 @@
 ---
 collection: portfolio
-title: "Library Development"
+title: "Azul Engine"
 excerpt: "A collection of libraries to be used in a game engine<br/><img src='/images/library-development-thumbnail.PNG'>"
 ---
 
