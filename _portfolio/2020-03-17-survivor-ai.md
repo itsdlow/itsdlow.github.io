@@ -5,7 +5,6 @@ excerpt: "An implementation of artificially intelligent survivors in a zombie su
 image_title: "Walk-through"
 image_url: "/images/SE475-Project3_UML.png"
 ---
-An implementation of a Tetris game based on [freetetris.org](https://www.freetetris.org/game.php)
 
 ## The Experience
 
