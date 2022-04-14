@@ -29,17 +29,18 @@ The memory library has numerous features for quality-of-life, including memory l
 - 4x4 Matrices
 - Quaternions
 - Optimized for speed using SIMD
+- Const & non-const interface
 - Vector Linear Interpolation (LERP)
 - Quaternion Spherical Linear Interpolation (SLERP)
 - x86/x64 support
 
-Every game engine needs a fast and accurate math library. This library is optimized for speed using SIMD operations, where possible, and verified for accuracy with many unit tests. The library supports 3D Vect, 4x4 Matrix, and Quaternion classes. The library is const correct in order to ensure no collision with any user frameworks or coding styles.
+Every game engine needs a fast and accurate math library. This library is optimized to use SIMD operations, where possible, and verified for accuracy with unit tests. The library is const correct in order to ensure no collision with any user frameworks or coding styles.
 
-The library supports conversions between rotation-only Matrices and Quaternions, if needed.
+The library supports conversions between rotation-only Matrices and Quaternions.
 
 Using setters/getters and nameless unions, each vector and quaternion can be accessed similar to arrays or by function call. This allows the user to access each float individually, but allows the library to use `__m128` for use with SIMD operations.
 
-The library contains interpolation functions that can run on a single vector/quaternion or an array.
+The library contains an application layer which contains interpolation functions for individual or arrays of vectors and quaternions.
 
 
 ## PCS Tree Library
@@ -78,7 +79,7 @@ This library is a faster implementation of the C stdio library, due to the use o
 - Tracking stats
 - x86/x64 support
 
-One of the simplest and most versitile data containers is the linked list. This library is an object-oriented doubly linked list. Once a class is derived from the base DLink class, it can then be added easily added to a linked list.
+One of the simplest and most versitile data containers is the linked list. This library is an object-oriented doubly linked list manager library. Once a class is derived from the base DLink class, it can then be added easily added to a linked list.
 
 The library contains two base manager classes that can be derived from: DLinkManager and BaseManager. The BaseManager is to be used for any objects you would like to pool in order to reduce memory allocation/deallocations. Both manager classes contain stat tracking, such as nodes currently on list and max nodes on list. The Pooled Manager also contains information about the number of nodes created, the numbers of nodes active, and the number of nodes on the reserve list.
 
