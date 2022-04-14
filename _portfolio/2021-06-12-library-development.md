@@ -79,7 +79,7 @@ This library is a faster implementation of the C stdio library, due to the use o
 - Tracking stats
 - x86/x64 support
 
-One of the simplest and most versitile data containers is the linked list. This library is an object-oriented doubly linked list manager library. Once a class is derived from the base DLink class, it can then be added easily added to a linked list.
+One of the simplest and most versitile data containers is the linked list. This library is an object-oriented doubly linked list. Once a class is derived from the base DLink class, it can then be added easily added to a linked list.
 
 The library contains two base manager classes that can be derived from: DLinkManager and BaseManager. The BaseManager is to be used for any objects you would like to pool in order to reduce memory allocation/deallocations. Both manager classes contain stat tracking, such as nodes currently on list and max nodes on list. The Pooled Manager also contains information about the number of nodes created, the numbers of nodes active, and the number of nodes on the reserve list.
 
