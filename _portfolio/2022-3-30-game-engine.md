@@ -20,7 +20,7 @@ excerpt: "A custom game engine implementation<br/><img src='/images/game-engine-
 
 
 
-#### Run-time Resources
+### Run-time Resources
 
 ​	In order to standardize resource loading within the engine, all resources pertaining to models, textures and fonts must go through a conversion tool. The conversion tool takes in the various types of resources and serializes their data using [Google protocol buffers](https://developers.google.com/protocol-buffers/). The Google protocol buffer's are then used during engine runtime for the deserialization of resources, into the engines run-time formats.
 
@@ -30,7 +30,7 @@ excerpt: "A custom game engine implementation<br/><img src='/images/game-engine-
 
 
 
-#### Animation
+### Animation
 
 ​	Animation is an important feature of any game engine system. However it requires very costly operations. Fortunately, the type of work required for animating models is perfect for the multi-core architecture of GPUs. 	
 
@@ -46,7 +46,7 @@ excerpt: "A custom game engine implementation<br/><img src='/images/game-engine-
 
 
 
-#### Rendering
+### Rendering
 
 - ##### 2D Rendering
 
@@ -58,7 +58,7 @@ excerpt: "A custom game engine implementation<br/><img src='/images/game-engine-
 
 
 
-#### Multiple Camera Support
+### Multiple Camera Support
 
 The ability to switch between different cameras is supported. Along with multi-cam support are two different types of cameras: Perspective and Orthogonal. 
 
@@ -66,7 +66,7 @@ In addition to supporting multiple cameras, the engine also provides an interfac
 
 
 
-#### Shaders
+### Shaders
 
 - ##### Vertex & Fragment Shaders
 
@@ -78,13 +78,16 @@ In addition to supporting multiple cameras, the engine also provides an interfac
 
 
 
-#### Camera Frustum Culling
+### Camera Frustum Culling
 
 The engine also supports camera frustum culling based on the active camera(s). While the GPU has its own early abort within the rendering pipeline, we can optimize this even further by avoiding the request to draw of the mesh. Support for camera culling is available if toggled on. Using a frustum collision check with the mesh's bounding sphere, we can decide if the mesh would be visible in the frame. If the bounding sphere is visible in the frame, we must request the draw. If the sphere isn't within the frustum, we don't try to draw the model. Note: For this feature to work, all transformations must be uniform scaling.
 
 
 
-#### Scene Support
+### Scene Support
 
 The engine supports the ability to create and switch between different scenes. Scenes contain their own instance data, allowing for more optimized and separated game logic. Resource managers, such as those that manage Textures, Models, and Shaders, are shared between all scenes in order to reduce redundancy and lower memory footprint.
 
+
+
+##### WIP (5-9-22)

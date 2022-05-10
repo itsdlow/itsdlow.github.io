@@ -1,13 +1,13 @@
 ---
 layout: archive
-title: "CV"
+title: "Resume"
 permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
-file_url: "files/DeAngelo_Resume_08-2021.pdf"
+file_url: "files/DeAngelo-Wilson_Resume-22.pdf"
 file_type: "application/pdf"
-last_update_date: "July 2021"
+last_update_date: "May 2022"
 ---
 
 {% include base_path %}
