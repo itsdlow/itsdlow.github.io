@@ -5,7 +5,7 @@ permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
-file_url: "files/DeAngelo-Wilson_Resume-22.pdf"
+file_url: "files/DeAngelo-Wilson_Resume-2023.pdf"
 file_type: "application/pdf"
 last_update_date: "May 2022"
 ---
