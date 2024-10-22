@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 file_url: "files/DeAngelo-Wilson_Resume-2023.pdf"
 file_type: "application/pdf"
-last_update_date: "May 2022"
+last_update_date: "August 2023"
 ---
 
 {% include base_path %}
